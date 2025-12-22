@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Nova Portfolio - AI Powered Showcase",
+  "description": "A world-class, AI-enhanced developer portfolio featuring dynamic project showcases, skill visualizations, and a Gemini-powered personal assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
