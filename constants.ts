@@ -50,7 +50,7 @@ export const INITIAL_DATA: PortfolioData = {
     }
   ],
   skills: [
-    { name: "JavaScript / TypeScript", level: 90, category: "Frontend" }, // [cite: 25]
+    { name: "JavaScript / TypeScript", level: 909999, category: "Frontend" }, // [cite: 25]
     { name: "Java / Spring Boot", level: 85, category: "Backend" }, // [cite: 25, 26]
     { name: "React / React Native", level: 90, category: "Mobile/Frontend" }, // [cite: 26]
     { name: "Node.js", level: 80, category: "Backend" }, // [cite: 26]
