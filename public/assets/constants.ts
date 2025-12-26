@@ -63,6 +63,14 @@ export const INITIAL_DATA: PortfolioData = {
       tags: ["Web"],
       imageUrl: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800",
       category: "web"
+    },
+    {
+      id: "miyasaki",
+      title: "Miyasaki",
+      description: "Application de gestion de films d'animation (Studio Ghibli). Double implémentation : PHP/MySQL pour le backend avec synchro API, et version JS dynamique.",
+      tags: ["PHP", "MySQL", "JavaScript", "Apache", "API"],
+      imageUrl: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&q=80&w=800",
+      category: "web"
     }
   ],
   skills: [

@@ -32,9 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.description}
         </p>
         <div className="flex gap-4">
-          <a href="#" className="text-xs font-mono text-indigo-400 hover:text-white transition-colors flex items-center gap-2">
-            <i className="fas fa-external-link-alt"></i> VOIR LIVE
-          </a>
+
           <a href="#" className="text-xs font-mono text-slate-500 hover:text-white transition-colors flex items-center gap-2">
             <i className="fab fa-github"></i> CODE SOURCE
           </a>
