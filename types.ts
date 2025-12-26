@@ -46,4 +46,19 @@ export interface PortfolioData {
   projects: Project[];
   skills: Skill[];
   experiences: Experience[];
+  education: Education[];
+  languages: Language[];
+  interests: string[];
+}
+
+export interface Education {
+  school: string;
+  degree: string;
+  period: string;
+  location?: string;
+}
+
+export interface Language {
+  name: string;
+  level: string;
 }

@@ -1,16 +1,28 @@
 
 import React, { useState, useEffect } from 'react';
-import { INITIAL_DATA } from './constants';
+import { INITIAL_DATA } from './public/assets/constants';
 import { PortfolioData } from './types';
 import ProjectCard from './components/ProjectCard';
 import Button from './components/Button';
 import AIAssistant from './components/AIAssistant';
 import SkillChart from './components/SkillChart';
+import Resume from './components/Resume';
 
 const App: React.FC = () => {
   const [data, setData] = useState<PortfolioData>(() => {
     const saved = localStorage.getItem('yousif_portfolio_data');
-    return saved ? JSON.parse(saved) : INITIAL_DATA;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        // Ensure new fields exist
+        if (parsed.education && parsed.languages && parsed.interests) {
+          return parsed;
+        }
+      } catch (e) {
+        console.error("Error parsing saved data", e);
+      }
+    }
+    return INITIAL_DATA;
   });
   const [scrolled, setScrolled] = useState(false);
 
@@ -25,7 +37,7 @@ const App: React.FC = () => {
       {/* Orbes de lumière décoratifs */}
       <div className="fixed top-0 -left-20 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="fixed bottom-0 -right-20 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-      
+
       <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${scrolled ? 'py-3 glass border-b border-white/10' : 'py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -52,7 +64,7 @@ const App: React.FC = () => {
                 Disponible pour alternance - Sept 2025
               </div>
               <h1 className="text-6xl md:text-8xl font-black text-white leading-none tracking-tighter uppercase italic">
-                CRAFTING <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">DIGITAL</span> SOLUTIONS
+                CRAFTING <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">DIGITAL</span> SOLUTIONS
               </h1>
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
                 {data.userInfo.name}
@@ -61,9 +73,9 @@ const App: React.FC = () => {
                 {data.userInfo.title}
               </h2>
               <div className="pt-4">
-                <a 
-                  href={data.userInfo.cvUrl} 
-                  download 
+                <a
+                  href={data.userInfo.cvUrl}
+                  download
                   className="inline-block px-6 py-2 rounded-xl font-mono text-sm border border-indigo-500/50 text-indigo-400 hover:bg-indigo-500/10 transition-colors"
                 >
                   Télécharger mon CV
@@ -73,18 +85,24 @@ const App: React.FC = () => {
                 {data.userInfo.bio}
               </p>
               <div className="flex gap-4">
-                <Button onClick={() => document.getElementById('projects')?.scrollIntoView({behavior:'smooth'})}>VOIR MES PROJETS</Button>
-                <Button variant="outline" as="a" href={data.userInfo.cvUrl} download>TÉLÉCHARGER CV</Button>
-              </div>
+                <Button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>VOIR MES PROJETS</Button>
+                <Button
+                  variant="outline"
+                  as="a"
+                  href={data.userInfo.cvUrl}
+                  download="CV_Yousif_SABTI.pdf" // هنا تگدر تنطي أي اسم يعجبك للملف لما ينزل
+                >
+                  TÉLÉCHARGER CV
+                </Button>              </div>
             </div>
-            
+
             <div className="w-full lg:w-5/12 relative group">
               <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-600 to-emerald-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
               <div className="relative glass rounded-3xl p-2 border border-white/10">
-                <img 
-                  src={data.userInfo.photoUrl} 
-                  alt={data.userInfo.name} 
-                  className="rounded-2xl w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+                <img
+                  src={data.userInfo.photoUrl}
+                  alt={data.userInfo.name}
+                  className="rounded-2xl w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   onError={(e) => { e.currentTarget.src = "https://avatars.githubusercontent.com/u/193010070?v=4"; }}
                 />
               </div>
@@ -144,6 +162,9 @@ const App: React.FC = () => {
             ))}
           </div>
         </section>
+
+        {/* RESUME SECTION */}
+        <Resume data={data} />
       </main>
 
       <footer className="py-12 border-t border-white/5 bg-slate-950/80">
