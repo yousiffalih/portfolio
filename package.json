@@ -2,6 +2,7 @@
   "name": "copy-of-nova-portfolio---ai-powered-showcase",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://yousiffalih.github.io/portfolio/",
   "type": "module",
   "scripts": {
     "dev": "vite",
