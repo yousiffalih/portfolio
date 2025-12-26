@@ -8,16 +8,16 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="group relative glass rounded-3xl overflow-hidden border border-white/5 hover:border-indigo-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10">
+    <div id={project.id} className="group relative glass rounded-3xl overflow-hidden border border-white/5 hover:border-indigo-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10">
       <div className="h-64 overflow-hidden relative">
-        <img 
-          src={project.imageUrl} 
-          alt={project.title} 
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-80"></div>
         <div className="absolute bottom-4 left-6">
-           <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {project.tags.slice(0, 3).map(tag => (
               <span key={tag} className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                 {tag}
